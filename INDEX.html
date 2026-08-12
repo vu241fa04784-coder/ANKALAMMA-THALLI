@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
+    <title>Sri Ankalamma Thalli Devastanam | Gummalampadu</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Noto+Serif+Telugu:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-maroon: #2A0808;
+            --bg-maroon-dark: #170404;
+            --gold-primary: #D4A33A;
+            --gold-bright: #F5C95A;
+            --gold-light: #FFE8A3;
+            --cream: #F7E8C8;
+            --dark-black: #090606;
+            --glass-bg: rgba(42, 8, 8, 0.85);
+            --glass-border: rgba(212, 163, 58, 0.3);
+            --font-heading: 'Cinzel', serif;
+            --font-telugu: 'Noto Serif Telugu', serif;
+            --font-body: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--dark-black);
+            color: var(--cream);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .telugu-text {
+            font-family: var(--font-telugu);
+        }
+
+        /* --------------------------------------------------
+           CINEMATIC INTRO SCREEN (GOLDEN DOORS)
+        -------------------------------------------------- */
+        #intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 99999;
+            background: var(--dark-black);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            transition: opacity 1.2s ease-in-out, visibility 1.2s;
+        }
+
+        #intro-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .intro-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .intro-title-box {
+            position: absolute;
+            top: 12%;
+            z-index: 12;
+            text-shadow: 0 0 20px rgba(245, 201, 90, 0.6);
+            animation: fadeInGlow 2.5s ease-out forwards;
+            padding: 0 15px;
+        }
+
+        .intro-title-box h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.5rem, 4vw, 3.5rem);
+            color: var(--gold-bright);
+            text-transform: uppercase;
+        }
+
+        .intro-title-box h2 {
+            font-family: var(--font-telugu);
+            font-size: clamp(1.2rem, 3vw, 2.5rem);
+            color: var(--cream);
+            margin-top: 5px;
+        }
+
+        .doors-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1200px;
+            z-index: 5;
+        }
+
+        .door {
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, #1f0505 0%, #3d0c0c 50%, #1a0404 100%);
+            border: 3px solid var(--gold-primary);
+            position: relative;
+            transition: transform 3s cubic-bezier(0.77, 0, 0.175, 1);
+            transform-style: preserve-3d;
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.9), 0 0 30px rgba(212, 163, 58, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .door-left {
+            transform-origin: left center;
+            border-right: 2px solid var(--gold-bright);
+        }
+
+        .door-right {
+            transform-origin: right center;
+            border-left: 2px solid var(--gold-bright);
+        }
+
+        .door-pattern {
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            border: 2px dashed var(--gold-primary);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .door-motif {
+            width: 60px;
+            height: 60px;
+            border: 2px solid var(--gold-bright);
+            transform: rotate(45deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px var(--gold-primary);
+        }
+
+        .door-motif i {
+            transform: rotate(-45deg);
+            color: var(--gold-bright);
+            font-size: 1.5rem;
+        }
+
+        .door-bell {
+            color: var(--gold-bright);
+            font-size: 2rem;
+            filter: drop-shadow(0 0 10px var(--gold-primary));
+        }
+
+        .doors-open .door-left {
+            transform: rotateY(-105deg);
+        }
+
+        .doors-open .door-right {
+            transform: rotateY(105deg);
+        }
+
+        .doors-open .intro-title-box {
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .divine-light-behind {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(245,201,90,1) 0%, rgba(212,163,58,0.5) 40%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            filter: blur(30px);
+            opacity: 0;
+            transition: opacity 2s ease, transform 3s ease;
+            z-index: 2;
+        }
+
+        .doors-open .divine-light-behind {
+            opacity: 1;
+            transform: scale(4);
+        }
+
+        .skip-intro-btn {
+            position: absolute;
+            bottom: 25px;
+            right: 20px;
+            z-index: 100;
+            background: rgba(42, 8, 8, 0.9);
+            border: 1px solid var(--gold-primary);
+            color: var(--gold-bright);
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            pointer-events: auto;
+        }
+
+        .skip-intro-btn:hover {
+            background: var(--gold-primary);
+            color: var(--dark-black);
+        }
+
+        /* --------------------------------------------------
+           NAVIGATION BAR
+        -------------------------------------------------- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 12px 4%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--glass-border);
+            transition: all 0.4s ease;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .nav-logo i {
+            color: var(--gold-bright);
+            font-size: 1.6rem;
+            filter: drop-shadow(0 0 8px var(--gold-primary));
+        }
+
+        .nav-logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-logo-title {
+            font-family: var(--font-heading);
+            color: var(--gold-bright);
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-logo-sub {
+            font-family: var(--font-telugu);
+            color: var(--cream);
+            font-size: 0.75rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-bright);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .donate-nav-btn {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-bright));
+            color: var(--dark-black);
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.8rem;
+            box-shadow: 0 0 12px rgba(245, 201, 90, 0.4);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .donate-nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(245, 201, 90, 0.8);
+        }
+
+        .hamburger {
+            display: none;
+            color: var(--gold-bright);
+            font-size: 1.4rem;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        /* --------------------------------------------------
+           HERO SECTION
+        -------------------------------------------------- */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            text-align: center;
+            padding: 80px 20px 40px 20px;
+        }
+
+        .hero-video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.6) contrast(1.1);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(42,8,8,0.3) 0%, rgba(9,6,6,0.88) 100%);
+            z-index: 2;
+        }
+
+        .hero-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 4;
+            max-width: 850px;
+            margin-top: 20px;
+        }
+
+        .diya-icon {
+            font-size: 2.2rem;
+            color: var(--gold-bright);
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 15px var(--gold-bright));
+            animation: flameFlicker 1.5s infinite alternate;
+        }
+
+        .hero-title-telugu {
+            font-family: var(--font-telugu);
+            font-size: clamp(2rem, 5vw, 4rem);
+            color: var(--gold-bright);
+            margin-bottom: 8px;
+            text-shadow: 0 0 25px rgba(212, 163, 58, 0.6);
+        }
+
+        .hero-title-en {
+            font-family: var(--font-heading);
+            font-size: clamp(1.3rem, 3.5vw, 2.5rem);
+            color: var(--cream);
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .hero-tagline-en {
+            font-size: clamp(0.8rem, 1.5vw, 1.1rem);
+            color: var(--gold-light);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .hero-tagline-telugu {
+            font-family: var(--font-telugu);
+            font-size: clamp(0.95rem, 2vw, 1.25rem);
+            color: var(--cream);
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-bright) 100%);
+            color: var(--dark-black);
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(212, 163, 58, 0.4);
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(245, 201, 90, 0.8);
+        }
+
+        .btn-secondary {
+            background: rgba(42, 8, 8, 0.7);
+            border: 1px solid var(--gold-primary);
+            color: var(--cream);
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 500;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background: var(--gold-primary);
+            color: var(--dark-black);
+        }
+
+        /* --------------------------------------------------
+           SECTIONS COMMON
+        -------------------------------------------------- */
+        section {
+            padding: 70px 6% 50px 6%;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title-telugu {
+            font-family: var(--font-telugu);
+            font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+            color: var(--gold-bright);
+            margin-bottom: 6px;
+        }
+
+        .section-title-en {
+            font-family: var(--font-heading);
+            font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+            color: var(--cream);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .section-divider {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+            margin: 12px auto 0 auto;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '◆';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--gold-bright);
+            font-size: 0.75rem;
+        }
+
+        /* --------------------------------------------------
+           ABOUT SECTION
+        -------------------------------------------------- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-image-card {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid var(--gold-primary);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+
+        .about-image-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .about-card-text {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 25px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .stat-card {
+            background: rgba(15, 5, 5, 0.7);
+            border: 1px solid var(--gold-primary);
+            padding: 18px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-card i {
+            font-size: 1.8rem;
+            color: var(--gold-bright);
+            margin-bottom: 8px;
+        }
+
+        .stat-title {
+            font-family: var(--font-heading);
+            color: var(--cream);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        /* --------------------------------------------------
+           TRUST DETAILS SECTION
+        -------------------------------------------------- */
+        .trust-banner-container {
+            background: linear-gradient(135deg, rgba(61,12,12,0.9) 0%, rgba(26,4,4,0.95) 100%);
+            border: 2px solid var(--gold-primary);
+            border-radius: 16px;
+            padding: 30px 25px;
+            text-align: center;
+            box-shadow: 0 0 35px rgba(212, 163, 58, 0.2);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .trust-shloka {
+            font-family: var(--font-telugu);
+            color: var(--gold-bright);
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            text-shadow: 0 0 10px rgba(245, 201, 90, 0.4);
+        }
+
+        .trust-heading-main {
+            font-family: var(--font-heading);
+            color: var(--gold-bright);
+            font-size: 1.5rem;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .trust-heading-sub {
+            color: var(--cream);
+            font-size: 0.95rem;
+            margin-bottom: 18px;
+            letter-spacing: 0.5px;
+        }
+
+        .trust-info-card {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px dashed var(--gold-primary);
+            border-radius: 10px;
+            padding: 20px;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+            max-width: 750px;
+        }
+
+        .trust-info-card h4 {
+            font-family: var(--font-heading);
+            color: var(--gold-bright);
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+
+        .trust-info-card p {
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+            color: var(--cream);
+        }
+
+        .trust-info-card a {
+            color: var(--gold-bright);
+            text-decoration: none;
+        }
+
+        .trust-info-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* --------------------------------------------------
+           HISTORY SECTION
+        -------------------------------------------------- */
+        .history-container {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 30px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+        }
+
+        .lang-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .tab-btn {
+            background: rgba(0,0,0,0.5);
+            border: 1px solid var(--gold-primary);
+            color: var(--cream);
+            padding: 8px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            background: var(--gold-primary);
+            color: var(--dark-black);
+            font-weight: 600;
+        }
+
+        .history-text-block {
+            line-height: 1.8;
+            font-size: 1rem;
+            color: var(--cream);
+        }
+
+        .history-text-block h3 {
+            color: var(--gold-bright);
+            margin: 20px 0 10px 0;
+            font-size: 1.2rem;
+            border-bottom: 1px solid rgba(212, 163, 58, 0.2);
+            padding-bottom: 5px;
+        }
+
+        /* --------------------------------------------------
+           FESTIVALS SECTION
+        -------------------------------------------------- */
+        .festivals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .festival-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 22px;
+            transition: all 0.3s ease;
+        }
+
+        .festival-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold-bright);
+        }
+
+        .festival-card i {
+            font-size: 2rem;
+            color: var(--gold-bright);
+            margin-bottom: 12px;
+        }
+
+        .festival-title-en {
+            font-family: var(--font-heading);
+            color: var(--gold-bright);
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .festival-title-te {
+            font-family: var(--font-telugu);
+            color: var(--cream);
+            font-size: 1rem;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        /* --------------------------------------------------
+           GALLERY SECTION
+        -------------------------------------------------- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            border: 1px solid var(--glass-border);
+            cursor: pointer;
+            background: #150505;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 12px;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-caption {
+            color: var(--gold-bright);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        #lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.92);
+            z-index: 100000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        #lightbox img {
+            max-width: 95%;
+            max-height: 85vh;
+            border: 2px solid var(--gold-primary);
+            border-radius: 8px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            color: var(--gold-bright);
+            font-size: 2.2rem;
+            cursor: pointer;
+        }
+
+        /* --------------------------------------------------
+           DONATION SECTION
+        -------------------------------------------------- */
+        .donation-card {
+            max-width: 750px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, rgba(61,12,12,0.9) 0%, rgba(26,4,4,0.95) 100%);
+            border: 2px solid var(--gold-primary);
+            border-radius: 16px;
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: 0 0 40px rgba(212, 163, 58, 0.2);
+        }
+
+        .donation-title {
+            font-family: var(--font-heading);
+            color: var(--gold-bright);
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        .donation-placeholder-box {
+            background: rgba(0,0,0,0.5);
+            border: 1px dashed var(--gold-primary);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+        }
+
+        /* --------------------------------------------------
+           LOCATION & CONTACT SECTIONS
+        -------------------------------------------------- */
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 340px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid var(--gold-primary);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .contact-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .contact-card i {
+            font-size: 1.8rem;
+            color: var(--gold-bright);
+            margin-bottom: 10px;
+        }
+
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 25px;
+            left: 20px;
+            z-index: 9999;
+            background: #25D366;
+            color: white;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            text-decoration: none;
+            animation: pulseGreen 2s infinite;
+        }
+
+        .floating-music {
+            position: fixed;
+            bottom: 25px;
+            right: 20px;
+            z-index: 9999;
+            background: var(--glass-bg);
+            border: 1px solid var(--gold-primary);
+            color: var(--gold-bright);
+            padding: 8px 16px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            font-size: 0.8rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        /* --------------------------------------------------
+           FOOTER
+        -------------------------------------------------- */
+        footer {
+            background: var(--bg-maroon-dark);
+            border-top: 1px solid var(--gold-primary);
+            padding: 50px 6% 25px 6%;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col h4 {
+            color: var(--gold-bright);
+            font-family: var(--font-heading);
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid rgba(212, 163, 58, 0.2);
+            padding-top: 20px;
+            font-size: 0.8rem;
+            color: rgba(247, 232, 200, 0.7);
+        }
+
+        .developer-credit {
+            margin-top: 6px;
+            font-size: 0.75rem;
+            color: var(--gold-primary);
+        }
+
+        @keyframes flameFlicker {
+            0% { transform: scale(1); opacity: 0.9; }
+            100% { transform: scale(1.15); opacity: 1; filter: drop-shadow(0 0 22px var(--gold-bright)); }
+        }
+
+        @keyframes pulseGreen {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        @keyframes wave {
+            0% { height: 20%; }
+            100% { height: 100%; }
+        }
+
+        @keyframes fadeInGlow {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Breakpoints & Mobile Friendly UI */
+        @media (max-width: 992px) {
+            .about-grid, .location-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 60px;
+                right: -100%;
+                width: 240px;
+                height: calc(100vh - 60px);
+                background: var(--bg-maroon-dark);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 25px;
+                transition: right 0.3s ease;
+                border-left: 1px solid var(--gold-primary);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .history-container, .trust-banner-container {
+                padding: 20px;
+            }
+
+            .floating-whatsapp {
+                width: 46px;
+                height: 46px;
+                font-size: 1.5rem;
+                bottom: 20px;
+                left: 15px;
+            }
+
+            .floating-music {
+                bottom: 20px;
+                right: 15px;
+                padding: 6px 12px;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. CINEMATIC INTRO SCREEN -->
+    <div id="intro-overlay">
+        <canvas id="intro-canvas"></canvas>
+        <div class="divine-light-behind"></div>
+
+        <div class="intro-content">
+            <div class="intro-title-box">
+                <h1>Sri Ankalamma Thalli</h1>
+                <h2>శ్రీ అంకలమ్మ తల్లి</h2>
+            </div>
+
+            <div class="doors-container" id="doors-container">
+                <div class="door door-left">
+                    <div class="door-pattern">
+                        <i class="fa-solid fa-bell door-bell"></i>
+                        <div class="door-motif">
+                            <i class="fa-solid fa-om"></i>
+                        </div>
+                        <i class="fa-solid fa-bell door-bell"></i>
+                    </div>
+                </div>
+
+                <div class="door door-right">
+                    <div class="door-pattern">
+                        <i class="fa-solid fa-bell door-bell"></i>
+                        <div class="door-motif">
+                            <i class="fa-solid fa-om"></i>
+                        </div>
+                        <i class="fa-solid fa-bell door-bell"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="skip-intro-btn" id="skip-intro-btn" onclick="enterWebsite()">SKIP INTRO <i class="fa-solid fa-angles-right"></i></button>
+    </div>
+
+    <!-- 2. NAVIGATION BAR -->
+    <nav class="navbar">
+        <a href="#home" class="nav-logo">
+            <i class="fa-solid fa-gopuram"></i>
+            <div class="nav-logo-text">
+                <span class="nav-logo-title">SRI ANKALAMMA THALLI</span>
+                <span class="nav-logo-sub">శ్రీ అంకలమ్మ తల్లి దేవస్థానం</span>
+            </div>
+        </a>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#home" onclick="toggleMenu()">HOME</a></li>
+            <li><a href="#about" onclick="toggleMenu()">ABOUT</a></li>
+            <li><a href="#trust-details" onclick="toggleMenu()">TRUST</a></li>
+            <li><a href="#history" onclick="toggleMenu()">HISTORY</a></li>
+            <li><a href="#festivals" onclick="toggleMenu()">FESTIVALS</a></li>
+            <li><a href="#gallery" onclick="toggleMenu()">GALLERY</a></li>
+            <li><a href="#donation" onclick="toggleMenu()">DONATION</a></li>
+            <li><a href="#location" onclick="toggleMenu()">LOCATION</a></li>
+            <li><a href="#contact" onclick="toggleMenu()">CONTACT</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <a href="#donation" class="donate-nav-btn"><i class="fa-solid fa-hand-holding-heart"></i> DONATE NOW</a>
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 3. HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-video-container">
+            <video autoplay loop muted playsinline poster="image.png">
+                <source src="video.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="hero-overlay"></div>
+        <canvas class="hero-particles" id="hero-particles-canvas"></canvas>
+
+        <div class="hero-content">
+            <div class="diya-icon">
+                <i class="fa-solid fa-fire"></i>
+            </div>
+            <h1 class="hero-title-telugu">శ్రీ అంకలమ్మ తల్లి</h1>
+            <h2 class="hero-title-en">SRI ANKALAMMA THALLI</h2>
+            <p class="hero-tagline-en">THE DIVINE MOTHER • THE PROTECTOR • THE POWER OF SHAKTI</p>
+            <p class="hero-tagline-telugu">“భక్తుల కొంగు బంగారమై, గ్రామ దేవతగా కొలువైన శ్రీ అంకలమ్మ తల్లి”</p>
+            
+            <div class="hero-buttons">
+                <a href="#about" class="btn-primary" onclick="startAutomaticMusic()"><i class="fa-solid fa-place-of-worship"></i> ENTER TEMPLE</a>
+                <a href="#history" class="btn-secondary"><i class="fa-solid fa-book-open-reader"></i> EXPLORE HISTORY</a>
+                <button onclick="openLiveDirections()" class="btn-secondary"><i class="fa-solid fa-route"></i> GET DIRECTIONS</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. ABOUT TEMPLE -->
+    <section id="about">
+        <div class="section-header">
+            <h2 class="section-title-telugu">శ్రీ అంకలమ్మ తల్లి దేవస్థానం</h2>
+            <h3 class="section-title-en">ABOUT SRI ANKALAMMA THALLI</h3>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="about-grid">
+            <div class="about-image-card">
+                <img src="image.png" alt="Sri Ankalamma Thalli Deity" loading="lazy">
+            </div>
+
+            <div class="about-content">
+                <div class="about-card-text">
+                    <p class="telugu-text" style="font-size: 1.05rem; margin-bottom: 12px;">
+                        ఆంధ్రప్రదేశ్ రాష్ట్రం, ప్రకాశం జిల్లా, గుమ్మలంపాడు గ్రామంలో వేంచేసియున్న శ్రీ అంకలమ్మ తల్లి సమస్త ప్రాణులను కాపాడే దివ్య శక్తి స్వరూపిణి.
+                    </p>
+                    <p>
+                        Located in Gummalampadu Village, Prakasam District, Andhra Pradesh – 523225, Sri Ankalamma Thalli Devastanam stands as a beacon of divine protection, faith, and cultural heritage for generations of devotees.
+                    </p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fa-solid fa-hands-praying"></i>
+                        <div class="stat-title">DIVINE MOTHER</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <div class="stat-title">GRAMA DEVATA</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fa-solid fa-people-roof"></i>
+                        <div class="stat-title">GENERATIONS OF FAITH</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fa-solid fa-gopuram"></i>
+                        <div class="stat-title">CULTURAL HERITAGE</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. TRUST DETAILS SECTION -->
+    <section id="trust-details">
+        <div class="trust-banner-container">
+            <div class="trust-shloka">|| Sarve Janaah Sukhinobhavantu ||</div>
+            <h3 class="trust-heading-main">SRI ANKALAMMA THALLI DEVASTANAM TRUST</h3>
+            <p class="trust-heading-sub">Gummalampadu Village</p>
+
+            <div class="trust-info-card">
+                <h4>SRI ANKALAMMA THALLI DEVASTANAM TRUST</h4>
+                <p>SRI ANKALAMMA THALLI DEVASTANAM TRUST was established in 2019 with motto of to comfort the needy people those who are in depression and distress. First of all it’s worked among only a few of areas and then it’s opened its wings to work among the entire state wherever the need of the trust incurred it’s bonded it self with a few of vital and virtual aims and objective. SRI ANKALAMMA THALLI DEVASTANAM TRUST is keen and eager in the commitment of the voluntary service. It’s fully a service oriented trust in regardless of caste, creed and community because it’s a non-political, non-profit and non-communal organisation.
+
+Finally, it is our sincere hope that all staff, trustees, supporters, volunteers and other stake holders with utilize the findings surround in the present year out only to gauge their progress during the year of the implementation of the activities, but also to make the necessary adjustments to enable them achieve better results and outcomes in line with millennium development goals as having benchmarks now an in the coming years.</p> <hr>
+
+                <p><strong>Regd. No:</strong> -19/2019, Under 32A Societies Registration Act of 1908.</p>
+                <p><strong>Regd. NGO:</strong> AP/2022/0321139</p>
+                <p>Gummalampadu Village, Santhanuthalapadu Mandal, Prakasam District, Andhra Pradesh - 523225.</p>
+                <p><strong>Contact:</strong> <a href="tel:9949770966">+91-9949770966</a> | <strong>Email:</strong> <a href="mailto:satdtrust@gmail.com">satdtrust@gmail.com</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. HISTORY SECTION -->
+    <section id="history">
+        <div class="section-header">
+            <h2 class="section-title-telugu">శ్రీ అంకలమ్మ తల్లి చరిత్ర</h2>
+            <h3 class="section-title-en">SRI ANKALAMMA THALLI HISTORY</h3>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="history-container">
+            <div class="lang-tabs">
+                <button class="tab-btn active" id="tab-te" onclick="switchHistoryLang('te')">తెలుగు</button>
+                <button class="tab-btn" id="tab-en" onclick="switchHistoryLang('en')">ENGLISH</button>
+            </div>
+
+            <div class="history-text-block telugu-text" id="history-content-te">
+                <p>ఆంధ్రప్రదేశ్‌లోని ప్రకాశం జిల్లా, గుమ్మలంపాడు గ్రామంలో ఉన్న శ్రీ అంకలమ్మ తల్లి దేవస్థానం, అంకలమ్మ (అంకమ్మ తల్లి అని కూడా పిలుస్తారు) అమ్మవారికి అంకితం చేయబడిన ఒక ప్రముఖ పుణ్యక్షేత్రం. ఈ ఆలయానికి సంబంధించిన చరిత్ర, సాంస్కృతిక సంప్రదాయాలు మరియు ఆధ్యాత్మిక ప్రాముఖ్యత యొక్క అవలోకనం ఇక్కడ ఉంది.</p>
+
+                <h3>ఆధ్యాత్మిక మూలాలు & పురాణ నేపథ్యం</h3>
+                <p>ఆంధ్రప్రదేశ్ గ్రామీణ సంప్రదాయాలలో, అంకలమ్మ తల్లిని శక్తి యొక్క शक्तिవంతమైన రూపంగా మరియు గ్రామ దేవతగా (గ్రామ రక్షక దేవతగా) భక్తితో కొలుస్తారు.</p>
+                <p><strong>పరమ మాత:</strong> ప్రాంతీయ సంప్రదాయాల ప్రకారం, అంకమ్మ తల్లిని పార్వతీ దేవి అవతారంగా భావిస్తారు; జానపద గాథలలో ఆమెను 'మూల శక్తి'గా కీర్తిస్తారు.</p>
+                <p><strong>క్షేత్ర పాలక దేవత:</strong> అంకలమ్మ వంటి గ్రామ దేవతల ఆలయాలు స్థానిక వ్యవసాయ మరియు పశుపాలక వర్గాలచే గ్రామ సరిహద్దులను రక్షించుకోవడానికి మరియు వ్యాధులు, ప్రకృతి వైపరీత్యాలు, దుష్ట శక్తుల నుండి రక్షణ కోసం ఏర్పడిన పవిత్ర స్థలాలుగా స్థానిక సంప్రదాయాలలో చెప్పబడతాయి.</p>
+                <p><strong>దైవిక రక్షకురాలు:</strong> ప్రాంతీయ కథనాల ప్రకారం, అంటువ్యాధులు లేదా సంక్షోభ సమయాల్లో గ్రామస్తులు అంకలమ్మ తల్లి పట్ల భక్తిని చాటుకునేవారు. వ్యాధుల నుండి కోలుకోవడం మరియు వ్యవసాయంలో సమృద్ధి వంటి విశ్వాసాలు గుమ్మలంపాడులో ఉన్నటువంటి శాశ్వత ఆలయాల ఏర్పాటుకు దారితీశాయని స్థానిక కథనాలు చెబుతాయి.</p>
+
+                <h3>గుమ్మలంపాడు ఆలయ చరిత్ర</h3>
+                <p>గుమ్మలంపాడులోని ఈ ఆలయం చుట్టుపక్కల ప్రాంతాలు మరియు గ్రామాలకు ఒక ముఖ్యమైన ఆధ్యాత్మిక కేంద్రంగా నిలుస్తోంది.</p>
+                <p><strong>తరతరాల వారసత్వం:</strong> ఈ ఆలయం తరతరాలుగా ఉన్న పవిత్ర స్థలంగా స్థానికంగా భావించబడుతుంది. సమాజ సహకారం మరియు స్థానిక విరాళాల ద్వారా ఇది ఒక వ్యవస్థీకృత ఆలయంగా అభివృద్ధి చెందింది.</p>
+                <p><strong>ప్రధాన దైవం:</strong> అనేక స్థానిక కుటుంబాలు మరియు వర్గాలకు గుమ్మలంపాడు అంకలమ్మ తల్లి ప్రధాన దైవంగా కొలువబడుతోంది. నవజాత శిశువులకు కేశఖండన వంటి జీవన ఘట్టాల ఆచారాలు మరియు వివాహ సంబంధిత ప్రార్థనల కోసం కుటుంబాలు తరతరాలుగా ఈ ఆలయాన్ని సందర్శిస్తుంటారు.</p>
+
+                <h3>ప్రధాన ఉత్సవాలు & ఆచారాలు</h3>
+                <p><strong>అంకలమ్మ తిరునాళ్ల / జాతర:</strong> ఆలయంలో జరిగే ముఖ్యమైన కార్యక్రమాలలో వార్షిక జాతర ఒకటి. చుట్టుపక్కల గ్రామాల నుండి భక్తులు పాల్గొని विभिन्न సంప్రదాయ నైవేద్యాలు మరియు పూజలను నిర్వహిస్తారు.</p>
+                <p><strong>పొంగళ్లు:</strong> పాలు, బెల్లంతో వండిన అన్నాన్ని అలంకరించిన మట్టి పాత్రలలో నైవేద్యంగా సమర్పించే సంప్రదాయం.</p>
+                <p><strong>చీర & కుంకుమ సమర్పణ:</strong> భక్తులు పసుపు-కుంకుమ మరియు చీరలను అమ్మవారికి సమర్పిస్తారు.</p>
+                <p><strong>జానపద ప్రదర్శనలు:</strong> డప్పు వాయిద్యం, సంప్రదాయ నృత్యాలు మరియు సాంస్కృతిక ఊరేగింపులు ఉత్సవాలలో భాగంగా ఉండవచ్చు.</p>
+                <p><strong>నవరాత్రి వేడుకలు:</strong> విజయదశమి / దసరా సమయంలో అమ్మవారికి ప్రత్యేక అలంకరణలు మరియు పూజలు నిర్వహిస్తారు.</p>
+
+                <h3>సందర్శన వివరాలు</h3>
+                <p><strong>ప్రదేశం:</strong> గుమ్మలంపాడు గ్రామం, ప్రకాశం జిల్లా, ఆంధ్రప్రదేశ్ – 523225.<br>
+                <strong>సమీప ప్రధాన పట్టణం:</strong> ఒంగోలు.<br>
+                <strong>ఆలయ వాతావరణం:</strong> స్థానిక ప్రజల విశ్వాసం, సంప్రదాయ నిర్మాణ శైలి మరియు ప్రజల భక్తిని ప్రతిబింబించే ప్రశాంతమైన గ్రామీణ ఆలయ వాతావరణం.</p>
+            </div>
+
+            <div class="history-text-block" id="history-content-en" style="display: none;">
+                <p>Sri Ankalamma Thalli Devastanam located in Gummalampadu village, Prakasam district, Andhra Pradesh, is a prominent shrine dedicated to Goddess Ankalamma (also known as Ankamma Thalli). The shrine is associated with local traditions, cultural practices and spiritual devotion.</p>
+
+                <h3>Spiritual Origin & Mythological History</h3>
+                <p>In rural folklore of Andhra Pradesh, Goddess Ankalamma is revered as a powerful form of Shakti and as a Grama Devata, or village guardian deity.</p>
+                <p><strong>The Supreme Mother:</strong> According to regional traditions, Ankamma Thalli is considered an avatar of Goddess Parvati and is celebrated in folklore as primordial energy, or Moola Shakti.</p>
+                <p><strong>The Guardian of the Soil:</strong> Shrines dedicated to village deities such as Ankalamma are traditionally associated with local agricultural and pastoral communities and their prayers for protection from illness, natural calamities and negative forces.</p>
+                <p><strong>The Divine Protector:</strong> Regional narratives describe villagers turning to Goddess Ankalamma during times of crisis and illness, with traditions of healing, protection and agricultural prosperity associated with her worship.</p>
+
+                <h3>History of Gummalampadu Shrine</h3>
+                <p>The temple at Gummalampadu serves as an important spiritual centre for surrounding villages and communities.</p>
+                <p><strong>Generational Heritage:</strong> The shrine is regarded locally as a place of generational devotion that developed through community support and local contributions.</p>
+                <p><strong>Prime Goddess:</strong> For many local families and communities, Ankalamma Thalli of Gummalampadu is an important family and village deity. Families traditionally visit the shrine for significant life events and prayers, including tonsure ceremonies for children and wedding-related rituals.</p>
+
+                <h3>Major Festivals & Rituals</h3>
+                <p><strong>Ankalamma Tirunalla / Jathara:</strong> The annual Jathara is one of the important celebrations associated with the temple. Devotees from surrounding villages participate in traditional offerings and worship.</p>
+                <p><strong>Pongallu:</strong> Rice prepared with milk and jaggery and offered as thanksgiving.</p>
+                <p><strong>Saree & Kumkum Offerings:</strong> Devotees offer traditional turmeric, kumkum and sarees to the Goddess.</p>
+                <p><strong>Folk Performances:</strong> Traditional drumming, folk dances and cultural processions may accompany the celebrations.</p>
+                <p><strong>Navaratri Celebrations:</strong> During Vijayadasami / Dussehra, special alankarams and worship are performed to honour different aspects of Shakti.</p>
+
+                <h3>Visiting Information</h3>
+                <p><strong>Location:</strong> Gummalampadu Village, Prakasam District, Andhra Pradesh – 523225.<br>
+                <strong>Nearest Major Town:</strong> Ongole.<br>
+                <strong>Temple Atmosphere:</strong> A peaceful rural temple environment reflecting local faith, traditional architectural elements and community devotion.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. FESTIVALS SECTION -->
+    <section id="festivals">
+        <div class="section-header">
+            <h2 class="section-title-telugu">ప్రధాన ఉత్సవాలు</h2>
+            <h3 class="section-title-en">FESTIVALS & CELEBRATIONS</h3>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="festivals-grid">
+            <div class="festival-card">
+                <i class="fa-solid fa-drum"></i>
+                <div class="festival-title-en">ANKALAMMA TIRUNALLA</div>
+                <div class="festival-title-te">అంకలమ్మ తిరునాళ్ల</div>
+                <p>The grand annual gathering where thousands of devotees assemble for holy rituals, cultural programs, and divine blessings.</p>
+            </div>
+
+            <div class="festival-card">
+                <i class="fa-solid fa-flag"></i>
+                <div class="festival-title-en">ANNUAL JATHARA</div>
+                <div class="festival-title-te">గ్రామ జాతర</div>
+                <p>Traditional village fair celebrated with immense devotion, featuring folk dances, traditional drumming, and community feasts.</p>
+            </div>
+
+            <div class="festival-card">
+                <i class="fa-solid fa-sun"></i>
+                <div class="festival-title-en">NAVARATRI UTSAVAM</div>
+                <div class="festival-title-te">దసరా నవరాత్రులు</div>
+                <p>Nine nights of divine worship honoring different alankarams of Goddess Ankalamma as the supreme Shakti energy.</p>
+            </div>
+
+            <div class="festival-card">
+                <i class="fa-solid fa-bowl-food"></i>
+                <div class="festival-title-en">PONGALLU & POOJAS</div>
+                <p>Sacred offerings cooked in traditional earthen pots presented by families in thanksgiving to the divine mother.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. GALLERY SECTION -->
+    <section id="gallery">
+        <div class="section-header">
+            <h2 class="section-title-telugu">దివ్య ఛాయాచిత్రాలు</h2>
+            <h3 class="section-title-en">TEMPLE GALLERY</h3>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="gallery-grid" id="gallery-grid"></div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="" alt="Gallery Preview">
+    </div>
+
+    <!-- 9. DONATION SECTION -->
+    <section id="donation">
+        <div class="section-header">
+            <h2 class="section-title-telugu">ఆలయ సేవకు మీ సహకారం</h2>
+            <h3 class="section-title-en">SUPPORT THE TEMPLE</h3>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="donation-card">
+            <i class="fa-solid fa-hands-holding-circle" style="font-size: 2.8rem; color: var(--gold-bright); margin-bottom: 12px;"></i>
+            <h3 class="donation-title">CONTRIBUTE TO TEMPLE DEVELOPMENT</h3>
+            <p>Devotees can support temple rituals, Anna Prasadam, maintenance, and festival developments.</p>
+
+            <div class="donation-placeholder-box">
+                <p style="color: var(--gold-bright); font-weight: 600;"><i class="fa-solid fa-circle-info"></i> OFFICIAL BANK & UPI DETAILS PLACEHOLDER</p>
+                <p style="font-size: 0.85rem; margin-top: 5px; opacity: 0.8;">[ Official Trust Account Number / UPI QR Code will be configured here by the Temple Trust ]</p>
+            </div>
+
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="#contact" class="btn-primary"><i class="fa-solid fa-envelope-open-text"></i> CONTACT TRUST</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. LOCATION SECTION -->
+    <section id="location">
+        <div class="section-header">
+            <h2 class="section-title-telugu">ఆలయ సందర్శన వివరాలు</h2>
+            <h3 class="section-title-en">VISIT SRI ANKALAMMA THALLI</h3>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="location-grid">
+            <div>
+                <h3 style="color: var(--gold-bright); font-size: 1.3rem; margin-bottom: 12px;">TEMPLE ADDRESS</h3>
+                <p class="telugu-text" style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 15px;">
+                    శ్రీ అంకలమ్మ తల్లి దేవస్థానం,<br>
+                    గుమ్మలంపాడు గ్రామం,<br>
+                    ప్రకాశం జిల్లా,<br>
+                    ఆంధ్రప్రదేశ్ – 523225.
+                </p>
+                <p style="margin-bottom: 20px;">
+                    <strong>Nearest Major Town:</strong> Ongole, Andhra Pradesh.
+                </p>
+                <button onclick="openLiveDirections()" class="btn-primary"><i class="fa-solid fa-diamond-turn-right"></i> GET DIRECTIONS</button>
+            </div>
+
+            <div class="map-container">
+                <iframe src="https://maps.google.com/maps?q=Gummalampadu,Prakasam,AndhraPradesh&t=&z=13&ie=UTF8&iwloc=&output=embed" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. CONTACT SECTION -->
+    <section id="contact">
+        <div class="section-header">
+            <h2 class="section-title-telugu">సంప్రదించండి</h2>
+            <h3 class="section-title-en">CONTACT US</h3>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="contact-cards">
+            <div class="contact-card">
+                <i class="fa-solid fa-phone"></i>
+                <h4>PHONE</h4>
+                <p style="margin-top: 6px;"><a href="tel:9949770966" style="color: var(--gold-bright); text-decoration: none;">+91 9949770966</a></p>
+            </div>
+
+            <div class="contact-card">
+                <i class="fa-brands fa-whatsapp"></i>
+                <h4>WHATSAPP</h4>
+                <p style="margin-top: 6px;"><a href="https://wa.me/919949770966?text=Jai%20Ankalamma%20Thalli" target="_blank" style="color: #25D366; text-decoration: none;">Chat on WhatsApp</a></p>
+            </div>
+
+            <div class="contact-card">
+                <i class="fa-brands fa-youtube"></i>
+                <h4>YOUTUBE</h4>
+                <p style="margin-top: 6px;"><a href="https://youtube.com/@sriankalammathallidevastanam?si=BNjNzmB3uz7R_vAg" target="_blank" style="color: #FF0000; text-decoration: none;">Watch Temple Channel</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Action Elements -->
+    <a href="https://wa.me/919949770966?text=Jai%20Ankalamma%20Thalli" class="floating-whatsapp" target="_blank" title="WhatsApp Us">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <div class="floating-music" id="music-toggle-btn" onclick="toggleBackgroundMusic()">
+        <i class="fa-solid fa-music"></i>
+        <span id="music-btn-text">DIVINE MUSIC: ON</span>
+    </div>
+
+    <!-- Background Devotional Audio -->
+    <audio id="bg-audio" loop autoplay>
+        <source src="audio.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- 12. FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4 class="telugu-text">శ్రీ అంకలమ్మ తల్లి దేవస్థానం</h4>
+                <p>Gummalampadu Village, Prakasam District, Andhra Pradesh – 523225.</p>
+                <p style="margin-top: 8px;">Phone: +91 9949770966</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>QUICK LINKS</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Temple</a></li>
+                    <li><a href="#trust-details">Trust Details</a></li>
+                    <li><a href="#history">Temple History</a></li>
+                    <li><a href="#festivals">Festivals</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>TEMPLE TRUST</h4>
+                <p>Managed By:</p>
+                <p style="color: var(--gold-bright); font-weight: 600; margin-top: 4px;">SRI ANKALAMMA THALLI TRUST</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© Sri Ankalamma Thalli Trust. All Rights Reserved.</p>
+            <div class="developer-credit">
+                Developed by <strong>ARRIBOYINASOFTWARE</strong> | 9392426060
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT CONTROLLERS -->
+    <script>
+        // Intro Doors Particles Animation
+        const introOverlay = document.getElementById('intro-overlay');
+        const doorsContainer = document.getElementById('doors-container');
+        const introCanvas = document.getElementById('intro-canvas');
+        const ctx = introCanvas.getContext('2d');
+
+        let particlesArray = [];
+        let canvasWidth = introCanvas.width = window.innerWidth;
+        let canvasHeight = introCanvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            canvasWidth = introCanvas.width = window.innerWidth;
+            canvasHeight = introCanvas.height = window.innerHeight;
+        });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvasWidth;
+                this.y = Math.random() * canvasHeight;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = Math.random() * 0.6 - 0.3;
+                this.speedY = Math.random() * -0.8 - 0.2;
+                this.alpha = Math.random() * 0.8 + 0.2;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.y < 0) {
+                    this.y = canvasHeight;
+                    this.x = Math.random() * canvasWidth;
+                }
+            }
+            draw() {
+                ctx.fillStyle = `rgba(245, 201, 90, ${this.alpha})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initIntroParticles() {
+            particlesArray = [];
+            const count = window.innerWidth < 768 ? 35 : 70;
+            for (let i = 0; i < count; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        function animateIntroParticles() {
+            ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+            particlesArray.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            if (introOverlay.style.display !== 'none') {
+                requestAnimationFrame(animateIntroParticles);
+            }
+        }
+
+        initIntroParticles();
+        animateIntroParticles();
+
+        setTimeout(() => {
+            doorsContainer.classList.add('doors-open');
+            setTimeout(() => {
+                enterWebsite();
+            }, 3000);
+        }, 1200);
+
+        function enterWebsite() {
+            startAutomaticMusic();
+            introOverlay.style.opacity = '0';
+            setTimeout(() => {
+                introOverlay.style.display = 'none';
+            }, 1200);
+        }
+
+        // Hero Particles Canvas
+        const heroCanvas = document.getElementById('hero-particles-canvas');
+        const heroCtx = heroCanvas.getContext('2d');
+        let heroParticles = [];
+
+        function resizeHeroCanvas() {
+            heroCanvas.width = heroCanvas.offsetWidth;
+            heroCanvas.height = heroCanvas.offsetHeight;
+        }
+        window.addEventListener('resize', resizeHeroCanvas);
+        resizeHeroCanvas();
+
+        const particleNum = window.innerWidth < 768 ? 25 : 50;
+        for (let i = 0; i < particleNum; i++) {
+            heroParticles.push({
+                x: Math.random() * heroCanvas.width,
+                y: Math.random() * heroCanvas.height,
+                radius: Math.random() * 2 + 1,
+                speedY: Math.random() * -0.5 - 0.2,
+                opacity: Math.random() * 0.7 + 0.3
+            });
+        }
+
+        function renderHeroParticles() {
+            heroCtx.clearRect(0, 0, heroCanvas.width, heroCanvas.height);
+            heroParticles.forEach(p => {
+                p.y += p.speedY;
+                if (p.y < 0) p.y = heroCanvas.height;
+                heroCtx.fillStyle = `rgba(212, 163, 58, ${p.opacity})`;
+                heroCtx.beginPath();
+                heroCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                heroCtx.fill();
+            });
+            requestAnimationFrame(renderHeroParticles);
+        }
+        renderHeroParticles();
+
+        // Navigation Controller
+        function toggleMenu() {
+            const navLinks = document.getElementById('nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        // History Language Switcher Controller
+        function switchHistoryLang(lang) {
+            document.getElementById('tab-te').classList.toggle('active', lang === 'te');
+            document.getElementById('tab-en').classList.toggle('active', lang === 'en');
+
+            document.getElementById('history-content-te').style.display = lang === 'te' ? 'block' : 'none';
+            document.getElementById('history-content-en').style.display = lang === 'en' ? 'block' : 'none';
+        }
+
+        // Gallery Grid Population
+        const galleryGrid = document.getElementById('gallery-grid');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        for (let i = 1; i <= 35; i++) {
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+            const imgPath = i === 1 ? 'image.png' : `image${i}.png`;
+
+            item.innerHTML = `
+                <img src="${imgPath}" alt="Sri Ankalamma Thalli Devastanam Photo ${i}" loading="lazy" onerror="this.parentElement.style.display='none'">
+                <div class="gallery-overlay">
+                    <span class="gallery-caption">Sri Ankalamma Thalli Devastanam</span>
+                </div>
+            `;
+
+            item.onclick = () => {
+                lightboxImg.src = imgPath;
+                lightbox.style.display = 'flex';
+            };
+
+            galleryGrid.appendChild(item);
+        }
+
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+        }
+
+        lightbox.onclick = (e) => {
+            if (e.target !== lightboxImg) closeLightbox();
+        };
+
+        // Automatic Background Music & Directions Handler
+        const bgAudio = document.getElementById('bg-audio');
+        const musicBtnText = document.getElementById('music-btn-text');
+        let isMusicPlaying = false;
+
+        function startAutomaticMusic() {
+            if (!isMusicPlaying) {
+                bgAudio.play().then(() => {
+                    isMusicPlaying = true;
+                    musicBtnText.innerText = "DIVINE MUSIC: ON";
+                }).catch(() => {
+                    document.addEventListener('click', function autoPlayOnce() {
+                        if (!isMusicPlaying) {
+                            bgAudio.play();
+                            isMusicPlaying = true;
+                            musicBtnText.innerText = "DIVINE MUSIC: ON";
+                        }
+                        document.removeEventListener('click', autoPlayOnce);
+                    }, { once: true });
+                });
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            startAutomaticMusic();
+        });
+
+        function toggleBackgroundMusic() {
+            if (isMusicPlaying) {
+                bgAudio.pause();
+                musicBtnText.innerText = "DIVINE MUSIC: OFF";
+                isMusicPlaying = false;
+            } else {
+                bgAudio.play().then(() => {
+                    musicBtnText.innerText = "DIVINE MUSIC: ON";
+                    isMusicPlaying = true;
+                }).catch(err => console.log(err));
+            }
+        }
+
+        function openLiveDirections() {
+            const templeAddress = encodeURIComponent("Sri Ankalamma Thalli Temple, Gummalampadu, Prakasam District, Andhra Pradesh 523225");
+            const directionsUrl = `https://www.google.com/maps/dir/?api=1&origin=current+location&destination=${templeAddress}`;
+            window.open(directionsUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
