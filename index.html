@@ -48,9 +48,7 @@
             font-family: var(--font-telugu);
         }
 
-        /* --------------------------------------------------
-           CINEMATIC INTRO SCREEN (GOLDEN DOORS)
-        -------------------------------------------------- */
+        /* CINEMATIC INTRO SCREEN */
         #intro-overlay {
             position: fixed;
             top: 0;
@@ -234,9 +232,7 @@
             color: var(--dark-black);
         }
 
-        /* --------------------------------------------------
-           NAVIGATION BAR
-        -------------------------------------------------- */
+        /* NAVIGATION BAR */
         .navbar {
             position: fixed;
             top: 0;
@@ -332,9 +328,7 @@
             padding: 5px;
         }
 
-        /* --------------------------------------------------
-           HERO SECTION
-        -------------------------------------------------- */
+        /* HERO SECTION */
         .hero {
             position: relative;
             min-height: 100vh;
@@ -482,9 +476,7 @@
             color: var(--dark-black);
         }
 
-        /* --------------------------------------------------
-           SECTIONS COMMON
-        -------------------------------------------------- */
+        /* SECTIONS COMMON */
         section {
             padding: 70px 6% 50px 6%;
             position: relative;
@@ -528,9 +520,7 @@
             font-size: 0.75rem;
         }
 
-        /* --------------------------------------------------
-           ABOUT SECTION
-        -------------------------------------------------- */
+        /* ABOUT SECTION */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -591,9 +581,7 @@
             letter-spacing: 1px;
         }
 
-        /* --------------------------------------------------
-           TRUST DETAILS SECTION
-        -------------------------------------------------- */
+        /* TRUST DETAILS SECTION */
         .trust-banner-container {
             background: linear-gradient(135deg, rgba(61,12,12,0.95) 0%, rgba(26,4,4,0.98) 100%);
             border: 2px solid var(--gold-primary);
@@ -661,9 +649,7 @@
             text-decoration: underline;
         }
 
-        /* --------------------------------------------------
-           HISTORY SECTION
-        -------------------------------------------------- */
+        /* HISTORY SECTION */
         .history-container {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
@@ -709,9 +695,7 @@
             padding-bottom: 5px;
         }
 
-        /* --------------------------------------------------
-           FESTIVALS SECTION
-        -------------------------------------------------- */
+        /* FESTIVALS SECTION */
         .festivals-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -752,9 +736,7 @@
             opacity: 0.9;
         }
 
-        /* --------------------------------------------------
-           GALLERY SECTION (OPTIMIZED LAZY LOADING)
-        -------------------------------------------------- */
+        /* GALLERY SECTION */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -843,9 +825,7 @@
             cursor: pointer;
         }
 
-        /* --------------------------------------------------
-           DONATION SECTION
-        -------------------------------------------------- */
+        /* DONATION SECTION */
         .donation-card {
             max-width: 750px;
             margin: 0 auto;
@@ -871,19 +851,60 @@
             margin: 25px 0;
         }
 
-        /* --------------------------------------------------
-           LOCATION & CONTACT SECTIONS
-        -------------------------------------------------- */
+        /* LOCATION & OPENING HOURS STYLES */
         .location-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 35px;
+            align-items: start;
+        }
+
+        .timings-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 22px;
+            margin-top: 20px;
+        }
+
+        .timings-card h4 {
+            color: var(--gold-bright);
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            display: flex;
             align-items: center;
+            gap: 8px;
+        }
+
+        .timing-block {
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed rgba(212, 163, 58, 0.2);
+        }
+
+        .timing-block:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .timing-label {
+            color: var(--gold-light);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .timing-detail {
+            font-size: 0.88rem;
+            color: var(--cream);
+            margin-left: 10px;
         }
 
         .map-container {
             width: 100%;
-            height: 340px;
+            height: 100%;
+            min-height: 380px;
             border-radius: 12px;
             overflow: hidden;
             border: 2px solid var(--gold-primary);
@@ -895,6 +916,7 @@
             border: 0;
         }
 
+        /* CONTACT SECTION */
         .contact-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -952,9 +974,7 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.5);
         }
 
-        /* --------------------------------------------------
-           FOOTER
-        -------------------------------------------------- */
+        /* FOOTER */
         footer {
             background: var(--bg-maroon-dark);
             border-top: 1px solid var(--gold-primary);
@@ -1012,7 +1032,7 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* Responsive Breakpoints & Mobile Optimization */
+        /* Responsive Breakpoints */
         @media (max-width: 992px) {
             .about-grid, .location-grid {
                 grid-template-columns: 1fr;
@@ -1108,7 +1128,7 @@
             <i class="fa-solid fa-gopuram"></i>
             <div class="nav-logo-text">
                 <span class="nav-logo-title">SRI ANKALAMMA THALLI</span>
-                <span class="nav-logo-sub">శ్రీ అంకాలమ్మ తల్లి దేవస్థానం</span>
+                <span class="nav-logo-sub">శ్రీ అంకాలమ్మ తల్లి దేవస్థానం గుమ్మలంపాడు</span>
             </div>
         </a>
 
@@ -1147,14 +1167,14 @@
                 <i class="fa-solid fa-fire"></i>
             </div>
             <h1 class="hero-title-telugu">శ్రీ అంకాలమ్మ తల్లి</h1>
-            <h2 class="hero-title-en">SRI ANKALAMMA THALLI</h2>
+            <h2 class="hero-title-en">SRI ANKALAMMA THALLI <p>Gummalampadu</p></h2>
             <p class="hero-tagline-en">THE DIVINE MOTHER • THE PROTECTOR • THE POWER OF SHAKTI</p>
             <p class="hero-tagline-telugu">“భక్తుల కొంగు బంగారమై, గ్రామ దేవతగా కొలువైన శ్రీ అంకాలమ్మ తల్లి”</p>
             
             <div class="hero-buttons">
                 <a href="#about" class="btn-primary" onclick="startAutomaticMusic()"><i class="fa-solid fa-place-of-worship"></i> ENTER TEMPLE</a>
                 <a href="#history" class="btn-secondary"><i class="fa-solid fa-book-open-reader"></i> EXPLORE HISTORY</a>
-                <button onclick="openLiveDirections()" class="btn-secondary"><i class="fa-solid fa-route"></i> GET DIRECTIONS</button>
+               
             </div>
         </div>
     </section>
@@ -1213,9 +1233,7 @@
 
             <div class="trust-info-card">
                 <h4>SRI ANKALAMMA THALLI DEVASTANAM TRUST</h4>
-                <p>SRI ANKALAMMA THALLI DEVASTANAM TRUST was established in 2019 with motto of to comfort the needy people those who are in depression and distress. First of all it’s worked among only a few of areas and then it’s opened its wings to work among the entire state wherever the need of the trust incurred it’s bonded it self with a few of vital and virtual aims and objective. SRI ANKALAMMA THALLI DEVASTANAM TRUST is keen and eager in the commitment of the voluntary service. It’s fully a service oriented trust in regardless of caste, creed and community because it’s a non-political, non-profit and non-communal organisation.
-
-Finally, it is our sincere hope that all staff, trustees, supporters, volunteers and other stake holders with utilize the findings surround in the present year out only to gauge their progress during the year of the implementation of the activities, but also to make the necessary adjustments to enable them achieve better results and outcomes in line with millennium development goals as having benchmarks now an in the coming years.</p> <hr style="margin: 15px 0; border-color: rgba(212,163,58,0.3);">
+                <p>SRI ANKALAMMA THALLI DEVASTANAM TRUST was established in 2019 . The main objective of this trust is to construct and administer the Sri Ankalamma Thalli Devastanam Gummalampadu and the properties thereof including the conduct of performance of religious rituals, ceremonies and festivals. Also to provide the food at free of cost for pilgrims visiting Sri Ankalamma Thalli Devastanam Gummalampadu without any distinction as to caste, religion, race or community.<hr>
 
                 <p><strong>Regd. No:</strong> -19/2019, Under 32A Societies Registration Act of 1908.</p>
                 <p><strong>Regd. NGO:</strong> AP/2022/0321139</p>
@@ -1252,7 +1270,7 @@ Finally, it is our sincere hope that all staff, trustees, supporters, volunteers
                 <p><strong>తరతరాల వారసత్వం:</strong> ఈ ఆలయం తరతరాలుగా ఉన్న పవిత్ర స్థలంగా స్థానికంగా భావించబడుతుంది. సమాజ సహకారం మరియు స్థానిక విరాళాల ద్వారా ఇది ఒక వ్యవస్థీకృత ఆలయంగా అభివృద్ధి చెందింది.</p>
 
                 <h3>ప్రధాన ఉత్సవాలు & ఆచారాలు</h3>
-                <p><strong>అంకలమ్మ తిరునాళ్ల / జాతర:</strong> ఆలయంలో జరిగే ముఖ్యమైన కార్యక్రమాలలో వార్షిక జాతర ఒకటి. చుట్టుపక్కల గ్రామాల నుండి భక్తులు పాల్గొని विभिन्न సంప్రదాయ నైవేద్యాలు మరియు పూజలను నిర్వహిస్తారు.</p>
+                <p><strong>అంకలమ్మ తిరునాళ్ల / జాతర:</strong> ఆలయంలో జరిగే ముఖ్యమైన కార్యక్రమాలలో వార్షిక జాతర ఒకటి. చుట్టుపక్కల గ్రామాల నుండి భక్తులు పాల్గొని సంప్రదాయ నైవేద్యాలు మరియు పూజలను నిర్వహిస్తారు.</p>
                 <p><strong>నవరాత్రి వేడుకలు:</strong> విజయదశమి / దసరా సమయంలో అమ్మవారికి ప్రత్యేక అలంకరణలు మరియు పూజలు నిర్వహిస్తారు.</p>
             </div>
 
@@ -1305,6 +1323,7 @@ Finally, it is our sincere hope that all staff, trustees, supporters, volunteers
             <div class="festival-card">
                 <i class="fa-solid fa-bowl-food"></i>
                 <div class="festival-title-en">PONGALLU & POOJAS</div>
+                 <div class="festival-title-te">పొంగళ్ళు & పూజలు</div>
                 <p>Sacred offerings cooked in traditional earthen pots presented by families in thanksgiving to the divine mother.</p>
             </div>
         </div>
@@ -1351,11 +1370,11 @@ Finally, it is our sincere hope that all staff, trustees, supporters, volunteers
         </div>
     </section>
 
-    <!-- 10. LOCATION SECTION -->
+    <!-- 10. LOCATION & OPENING HOURS SECTION -->
     <section id="location">
         <div class="section-header">
-            <h2 class="section-title-telugu">ఆలయ సందర్శన వివరాలు</h2>
-            <h3 class="section-title-en">VISIT SRI ANKALAMMA THALLI</h3>
+            <h2 class="section-title-telugu">ఆలయ సందర్శన & వేళలు</h2>
+            <h3 class="section-title-en">VISIT & OPENING HOURS</h3>
             <div class="section-divider"></div>
         </div>
 
@@ -1364,19 +1383,41 @@ Finally, it is our sincere hope that all staff, trustees, supporters, volunteers
                 <h3 style="color: var(--gold-bright); font-size: 1.3rem; margin-bottom: 12px;">TEMPLE ADDRESS</h3>
                 <p class="telugu-text" style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 15px;">
                     శ్రీ అంకాలమ్మ తల్లి దేవస్థానం,<br>
-                    గుమ్మలంపాడు గ్రామం,<br>
-                    ప్రకాశం జిల్లా,<br>
-                    ఆంధ్రప్రదేశ్ – 523225.
+                    గుమ్మలంపాడు గ్రామం, సంతనూతలపాడు మండలం,<br>
+                    ప్రకాశం జిల్లా, ఆంధ్రప్రదేశ్ – 523225.
                 </p>
-                <p style="margin-bottom: 20px;">
+                <p style="margin-bottom: 15px;">
                     <strong>Nearest Major Town:</strong> Ongole, Andhra Pradesh.
                 </p>
-                <button onclick="openLiveDirections()" class="btn-primary"><i class="fa-solid fa-diamond-turn-right"></i> GET DIRECTIONS</button>
+
+                <!-- OPENING HOURS CARD -->
+                <div class="timings-card">
+                    <h4><i class="fa-solid fa-clock"></i> TEMPLE TIMINGS / OPENING HOURS</h4>
+                    
+                    <div class="timing-block">
+                        <div class="timing-label"><i class="fa-solid fa-sun"></i> Morning Hours:</div>
+                        <div class="timing-detail">• <strong>Everyday:</strong> 7:00 AM to 8:00 AM</div>
+                        <div class="timing-detail">• <strong>Friday & Sunday:</strong> 8:00 AM to 12:00 PM</div>
+                    </div>
+
+                    <div class="timing-block">
+                        <div class="timing-label"><i class="fa-solid fa-moon"></i> Evening Hours:</div>
+                        <div class="timing-detail">• <strong>Everyday:</strong> 6:00 PM to 7:00 PM</div>
+                        <div class="timing-detail">• <strong>Friday & Sunday:</strong> 6:00 PM to 9:00 PM</div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 20px; display: flex; gap: 12px; flex-wrap: wrap;">
+                   
+                    
+                    <a href="https://goo.gl/maps/qjE4VNc6CpBkpXQC7" target="_blank" class="btn-secondary">
+                        <i class="fa-solid fa-map-location-dot"></i> OPEN IN GOOGLE MAPS
+                    </a>
+                </div>
             </div>
 
-            <div class="map-container">
-                <iframe src="https://maps.google.com/maps?q=Gummalampadu,Prakasam,AndhraPradesh&t=&z=13&ie=UTF8&iwloc=&output=embed" loading="lazy"></iframe>
-            </div>
+            <!-- EMBEDDED MAP -->
+          
         </div>
     </section>
 
@@ -1416,11 +1457,11 @@ Finally, it is our sincere hope that all staff, trustees, supporters, volunteers
 
     <div class="floating-music" id="music-toggle-btn" onclick="toggleBackgroundMusic()">
         <i class="fa-solid fa-music"></i>
-        <span id="music-btn-text">DIVINE MUSIC: OFF</span>
+        <span id="music-btn-text">DIVINE MUSIC: ON</span>
     </div>
 
     <!-- Background Devotional Audio -->
-    <audio id="bg-audio" loop preload="auto">
+    <audio id="bg-audio" loop preload="auto" autoplay>
         <source src="audio.mp3" type="audio/mpeg">
     </audio>
 
@@ -1446,14 +1487,14 @@ Finally, it is our sincere hope that all staff, trustees, supporters, volunteers
             </div>
 
             <div class="footer-col">
-                <h4>TEMPLE TRUST</h4>
-                <p>Managed By:</p>
-                <p style="color: var(--gold-bright); font-weight: 600; margin-top: 4px;">SRI ANKALAMMA THALLI TRUST</p>
+                
+                <p>Managed  & Orgainized by</p>
+                <p style="color: var(--gold-bright); font-weight: 600; margin-top: 4px;">SRI ANKALAMMA THALLI DEVASTHANAM Trust ,<h9>Gummalampadu(PRAKASAM DIST)</h9></p>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <p>© Sri Ankalamma Thalli Trust. All Rights Reserved.</p>
+            <p>© Sri Ankalamma Thalli Devasthanam Trust (Gummalampadu). All Rights Reserved.</p>
             <div class="developer-credit">
                 Developed by <strong>ARRIBOYINASOFTWARE</strong> | 9392426060
             </div>
@@ -1529,25 +1570,26 @@ Finally, it is our sincere hope that all staff, trustees, supporters, volunteers
         let isMusicPlaying = false;
 
         function startAutomaticMusic() {
-            if (!isMusicPlaying) {
-                bgAudio.play().then(() => {
-                    isMusicPlaying = true;
-                    musicBtnText.innerText = "DIVINE MUSIC: ON";
-                }).catch(() => {
-                    document.addEventListener('touchstart', autoPlayOnInteraction, { once: true });
-                    document.addEventListener('click', autoPlayOnInteraction, { once: true });
-                });
-            }
+            bgAudio.play().then(() => {
+                isMusicPlaying = true;
+                musicBtnText.innerText = "DIVINE MUSIC: ON";
+            }).catch(() => {
+                const unlockAudio = () => {
+                    bgAudio.play().then(() => {
+                        isMusicPlaying = true;
+                        musicBtnText.innerText = "DIVINE MUSIC: ON";
+                    }).catch(err => console.log(err));
+                    document.removeEventListener('click', unlockAudio);
+                    document.removeEventListener('touchstart', unlockAudio);
+                };
+                document.addEventListener('click', unlockAudio);
+                document.addEventListener('touchstart', unlockAudio);
+            });
         }
 
-        function autoPlayOnInteraction() {
-            if (!isMusicPlaying) {
-                bgAudio.play().then(() => {
-                    isMusicPlaying = true;
-                    musicBtnText.innerText = "DIVINE MUSIC: ON";
-                }).catch(e => console.log(e));
-            }
-        }
+        window.addEventListener('DOMContentLoaded', () => {
+            startAutomaticMusic();
+        });
 
         setTimeout(() => {
             doorsContainer.classList.add('doors-open');
@@ -1620,7 +1662,7 @@ Finally, it is our sincere hope that all staff, trustees, supporters, volunteers
             document.getElementById('history-content-en').style.display = lang === 'en' ? 'block' : 'none';
         }
 
-        // Gallery Grid Population with Optimized Image Loading & Fallbacks
+        // Gallery Grid Population
         const galleryGrid = document.getElementById('gallery-grid');
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
@@ -1642,11 +1684,11 @@ Finally, it is our sincere hope that all staff, trustees, supporters, volunteers
 
             imgEl.onload = () => {
                 imgEl.classList.add('loaded');
-                item.style.animation = 'none'; // Stop shimmer once loaded
+                item.style.animation = 'none';
             };
 
             imgEl.onerror = () => {
-                item.style.display = 'none'; // Hide element gracefully if image doesn't exist
+                item.style.display = 'none';
             };
 
             item.onclick = () => {
@@ -1679,11 +1721,12 @@ Finally, it is our sincere hope that all staff, trustees, supporters, volunteers
             }
         }
 
+        // Directions Handler using user's location to the specified Google Maps link
         function openLiveDirections() {
-            const templeAddress = encodeURIComponent("Sri Ankalamma Thalli Temple, Gummalampadu, Prakasam District, Andhra Pradesh 523225");
-            const directionsUrl = `https://www.google.com/maps/dir/?api=1&origin=current+location&destination=${templeAddress}`;
+            const destinationUrl = encodeURIComponent("https://goo.gl/maps/qjE4VNc6CpBkpXQC7");
+            const directionsUrl = `https://www.google.com/maps/dir/?api=1&origin=current+location&destination=${destinationUrl}`;
             window.open(directionsUrl, '_blank');
         }
     </script>
 </body>
-</html> 
+</html>
