@@ -78,18 +78,18 @@
             position: relative;
             z-index: 10;
             text-align: center;
-            pointer-events: none;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             width: 100%;
             height: 100%;
+            pointer-events: none;
         }
 
         .intro-title-box {
             position: absolute;
-            top: 12%;
+            top: 10%;
             z-index: 12;
             text-shadow: 0 0 15px rgba(245, 201, 90, 0.5);
             animation: fadeInGlow 2s ease-out forwards;
@@ -188,9 +188,11 @@
             transform: rotateY(105deg);
         }
 
-        .doors-open .intro-title-box {
+        .doors-open .intro-title-box,
+        .doors-open .start-experience-container {
             opacity: 0;
-            transition: opacity 0.8s ease;
+            pointer-events: none;
+            transition: opacity 0.6s ease;
         }
 
         .divine-light-behind {
@@ -209,27 +211,45 @@
             transform: scale(3.5);
         }
 
-        .skip-intro-btn {
+        /* Central Start Button */
+        .start-experience-container {
             position: absolute;
-            bottom: 25px;
-            right: 20px;
-            z-index: 100;
-            background: rgba(42, 8, 8, 0.95);
-            border: 1px solid var(--gold-primary);
-            color: var(--gold-bright);
-            padding: 10px 20px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-family: var(--font-body);
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            transition: background 0.3s ease;
+            z-index: 30;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
             pointer-events: auto;
         }
 
-        .skip-intro-btn:hover {
-            background: var(--gold-primary);
+        .start-darshan-btn {
+            background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold-primary) 100%);
             color: var(--dark-black);
+            font-family: var(--font-heading);
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            font-weight: 700;
+            padding: 16px 36px;
+            border: 2px solid var(--cream);
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 0 25px rgba(245, 201, 90, 0.6);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            animation: pulseGlow 2s infinite alternate;
+        }
+
+        .start-darshan-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 35px rgba(245, 201, 90, 0.9);
+            background: linear-gradient(135deg, #ffffff 0%, var(--gold-bright) 100%);
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 15px rgba(245, 201, 90, 0.4); transform: scale(1); }
+            100% { box-shadow: 0 0 30px rgba(245, 201, 90, 0.8); transform: scale(1.03); }
         }
 
         /* NAVIGATION BAR */
@@ -1092,8 +1112,17 @@
 
         <div class="intro-content">
             <div class="intro-title-box">
-                <h1>Sri Ankalamma Thalli</h1>
+                <h1>Sri Ankalamma Thalli </h1>
+                <p> Gummalampadu</p>
                 <h2>శ్రీ అంకాలమ్మ తల్లి</h2>
+            </div>
+
+            <!-- START BUTTON BEFORE DOORS OPEN -->
+            <div class="start-experience-container" id="start-container">
+                <button class="start-darshan-btn" id="start-btn" onclick="startTempleExperience()">
+                    <i class="fa-solid fa-om"></i> START DARSHAN <br>
+                    <i class="fa-solid fa-angles-right"></i>
+                </button>
             </div>
 
             <div class="doors-container" id="doors-container">
@@ -1118,8 +1147,6 @@
                 </div>
             </div>
         </div>
-
-        <button class="skip-intro-btn" id="skip-intro-btn" onclick="enterWebsite()">ENTER TEMPLE <i class="fa-solid fa-angles-right"></i></button>
     </div>
 
     <!-- 2. NAVIGATION BAR -->
@@ -1172,9 +1199,8 @@
             <p class="hero-tagline-telugu">“భక్తుల కొంగు బంగారమై, గ్రామ దేవతగా కొలువైన శ్రీ అంకాలమ్మ తల్లి”</p>
             
             <div class="hero-buttons">
-                <a href="#about" class="btn-primary" onclick="startAutomaticMusic()"><i class="fa-solid fa-place-of-worship"></i> ENTER TEMPLE</a>
+                <a href="#about" class="btn-primary"><i class="fa-solid fa-place-of-worship"></i> ENTER TEMPLE</a>
                 <a href="#history" class="btn-secondary"><i class="fa-solid fa-book-open-reader"></i> EXPLORE HISTORY</a>
-               
             </div>
         </div>
     </section>
@@ -1198,7 +1224,7 @@
                         ఆంధ్రప్రదేశ్ రాష్ట్రం, ప్రకాశం జిల్లా, గుమ్మలంపాడు గ్రామంలో వేంచేసియున్న శ్రీ అంకాలమ్మ తల్లి సమస్త ప్రాణులను కాపాడే దివ్య శక్తి స్వరూపిణి.
                     </p>
                     <p>
-                        Located in Gummalampadu Village, Prakasam District, Andhra Pradesh – 523225, Sri Ankalamma Thalli Devastanam stands as a beacon of divine protection, faith, and cultural heritage for generations of devotees.
+                        Located in Gummalampadu Village, Andhra Pradesh – 523225, Sri Ankalamma Thalli Devastanam stands as a beacon of divine protection, faith, and cultural heritage for generations of devotees.
                     </p>
                 </div>
 
@@ -1237,7 +1263,7 @@
 
                 <p><strong>Regd. No:</strong> -19/2019, Under 32A Societies Registration Act of 1908.</p>
                 <p><strong>Regd. NGO:</strong> AP/2022/0321139</p>
-                <p>Gummalampadu Village, Santhanuthalapadu Mandal, Prakasam District, Andhra Pradesh - 523225.</p>
+                <p>Gummalampadu Village, Santhanuthalapadu Mandal, Andhra Pradesh - 523225.</p>
                 <p><strong>Contact:</strong> <a href="tel:9949770966">+91-9949770966</a> | <strong>Email:</strong> <a href="mailto:satdtrust@gmail.com">satdtrust@gmail.com</a></p>
             </div>
         </div>
@@ -1258,24 +1284,24 @@
             </div>
 
             <div class="history-text-block telugu-text" id="history-content-te">
-                <p>ఆంధ్రప్రదేశ్‌లోని ప్రకాశం జిల్లా, గుమ్మలంపాడు గ్రామంలో ఉన్న శ్రీ  దేవస్థానం, అంకలమ్మ (అంకమ్మ తల్లి అని కూడా పిలుస్తారు) అమ్మవారికి అంకితం చేయబడిన ఒక ప్రముఖ పుణ్యక్షేత్రం. ఈ ఆలయానికి సంబంధించిన చరిత్ర, సాంస్కృతిక సంప్రదాయాలు మరియు ఆధ్యాత్మిక ప్రాముఖ్యత యొక్క అవలోకనం ఇక్కడ ఉంది.</p>
+                <p>ఆంధ్రప్రదేశ్‌లోని ప్రకాశం జిల్లా, గుమ్మలంపాడు గ్రామంలో ఉన్న శ్రీ  అంకాలమ్మ దేవస్థానం, అంకాలమ్మ (అంకమ్మ తల్లి అని కూడా పిలుస్తారు) అమ్మవారికి అంకితం చేయబడిన ఒక ప్రముఖ పుణ్యక్షేత్రం. ఈ ఆలయానికి సంబంధించిన చరిత్ర, సాంస్కృతిక సంప్రదాయాలు మరియు ఆధ్యాత్మిక ప్రాముఖ్యత యొక్క అవలోకనం ఇక్కడ ఉంది.</p>
 
                 <h3>ఆధ్యాత్మిక మూలాలు & పురాణ నేపథ్యం</h3>
                 <p>ఆంధ్రప్రదేశ్ గ్రామీణ సంప్రదాయాలలో, అంకాలమ్మ తల్లి ని శక్తి యొక్క శక్తివంతమైన రూపంగా మరియు గ్రామ దేవతగా (గ్రామ రక్షక దేవతగా) భక్తితో కొలుస్తారు.</p>
                 <p><strong>పరమ మాత:</strong> ప్రాంతీయ సంప్రదాయాల ప్రకారం, అంకమ్మ తల్లిని పార్వతీ దేవి అవతారంగా భావిస్తారు; జానపద గాథలలో ఆమెను 'మూల శక్తి'గా కీర్తిస్తారు.</p>
-                <p><strong>క్షేత్ర పాలక దేవత:</strong> అంకలమ్మ వంటి గ్రామ దేవతల ఆలయాలు స్థానిక వ్యవసాయ మరియు పశుపాలక వర్గాలచే గ్రామ సరిహద్దులను రక్షించుకోవడానికి మరియు వ్యాధులు, ప్రకృతి వైపరీత్యాలు, దుష్ట శక్తుల నుండి రక్షణ కోసం ఏర్పడిన పవిత్ర స్థలాలుగా స్థానిక సంప్రదాయాలలో చెప్పబడతాయి.</p>
+                <p><strong>క్షేత్ర పాలక దేవత:</strong> అంకాలమ్మ వంటి గ్రామ దేవతల ఆలయాలు స్థానిక వ్యవసాయ మరియు పశుపాలక వర్గాలచే గ్రామ సరిహద్దులను రక్షించుకోవడానికి మరియు వ్యాధులు, ప్రకృతి వైపరీత్యాలు, దుష్ట శక్తుల నుండి రక్షణ కోసం ఏర్పడిన పవిత్ర స్థలాలుగా స్థానిక సంప్రదాయాలలో చెప్పబడతాయి.</p>
 
                 <h3>గుమ్మలంపాడు ఆలయ చరిత్ర</h3>
                 <p>గుమ్మలంపాడులోని ఈ ఆలయం చుట్టుపక్కల ప్రాంతాలు మరియు గ్రామాలకు ఒక ముఖ్యమైన ఆధ్యాత్మిక కేంద్రంగా నిలుస్తోంది.</p>
                 <p><strong>తరతరాల వారసత్వం:</strong> ఈ ఆలయం తరతరాలుగా ఉన్న పవిత్ర స్థలంగా స్థానికంగా భావించబడుతుంది. సమాజ సహకారం మరియు స్థానిక విరాళాల ద్వారా ఇది ఒక వ్యవస్థీకృత ఆలయంగా అభివృద్ధి చెందింది.</p>
 
                 <h3>ప్రధాన ఉత్సవాలు & ఆచారాలు</h3>
-                <p><strong>అంకలమ్మ తిరునాళ్ల / జాతర:</strong> ఆలయంలో జరిగే ముఖ్యమైన కార్యక్రమాలలో వార్షిక జాతర ఒకటి. చుట్టుపక్కల గ్రామాల నుండి భక్తులు పాల్గొని సంప్రదాయ నైవేద్యాలు మరియు పూజలను నిర్వహిస్తారు.</p>
+                <p><strong>అంకాలమ్మ తిరునాళ్ల / జాతర:</strong> ఆలయంలో జరిగే ముఖ్యమైన కార్యక్రమాలలో వార్షిక జాతర ఒకటి. చుట్టుపక్కల గ్రామాల నుండి భక్తులు పాల్గొని సంప్రదాయ నైవేద్యాలు మరియు పూజలను నిర్వహిస్తారు.</p>
                 <p><strong>నవరాత్రి వేడుకలు:</strong> విజయదశమి / దసరా సమయంలో అమ్మవారికి ప్రత్యేక అలంకరణలు మరియు పూజలు నిర్వహిస్తారు.</p>
             </div>
 
             <div class="history-text-block" id="history-content-en" style="display: none;">
-                <p>Sri Ankalamma Thalli Devastanam located in Gummalampadu village, Prakasam district, Andhra Pradesh, is a prominent shrine dedicated to Goddess Ankalamma (also known as Ankamma Thalli). The shrine is associated with local traditions, cultural practices and spiritual devotion.</p>
+                <p>Sri Ankalamma Thalli Devastanam located in Gummalampadu village, Andhra Pradesh, is a prominent shrine dedicated to Goddess Ankalamma (also known as Ankamma Thalli). The shrine is associated with local traditions, cultural practices and spiritual devotion.</p>
 
                 <h3>Spiritual Origin & Mythological History</h3>
                 <p>In rural folklore of Andhra Pradesh, Goddess Ankalamma is revered as a powerful form of Shakti and as a Grama Devata, or village guardian deity.</p>
@@ -1302,7 +1328,7 @@
             <div class="festival-card">
                 <i class="fa-solid fa-drum"></i>
                 <div class="festival-title-en">ANKALAMMA TIRUNALLA</div>
-                <div class="festival-title-te">అంకలమ్మ తిరునాళ్ల</div>
+                <div class="festival-title-te">అంకాలమ్మ తిరునాళ్ల</div>
                 <p>The grand annual gathering where thousands of devotees assemble for holy rituals, cultural programs, and divine blessings.</p>
             </div>
 
@@ -1357,7 +1383,7 @@
         <div class="donation-card">
             <i class="fa-solid fa-hands-holding-circle" style="font-size: 2.8rem; color: var(--gold-bright); margin-bottom: 12px;"></i>
             <h3 class="donation-title">CONTRIBUTE TO TEMPLE DEVELOPMENT</h3>
-            <p>Devotees can support temple rituals, Anna Prasadam, maintenance, and festival developments.</p>
+            <p>Devotees can support temple rituals, Anna Prasadam, maintenance, and festival developments.<hr> <br>* Avail 80G Income tax benefits on all the Donations made to Sri Ankalamma Thalli Devastanam Trust, Gummalampadu.</p>
 
             <div class="donation-placeholder-box">
                 <p style="color: var(--gold-bright); font-weight: 600;"><i class="fa-solid fa-circle-info"></i> OFFICIAL BANK & UPI DETAILS PLACEHOLDER</p>
@@ -1380,14 +1406,12 @@
 
         <div class="location-grid">
             <div>
-                <h3 style="color: var(--gold-bright); font-size: 1.3rem; margin-bottom: 12px;">TEMPLE ADDRESS</h3>
+                <h3 style="color: var(--gold-bright); font-size: 1.3rem; margin-bottom: 12px;">TEMPLE TIMEINGS</h3>
                 <p class="telugu-text" style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 15px;">
-                    శ్రీ అంకాలమ్మ తల్లి దేవస్థానం,<br>
-                    గుమ్మలంపాడు గ్రామం, సంతనూతలపాడు మండలం,<br>
-                    ప్రకాశం జిల్లా, ఆంధ్రప్రదేశ్ – 523225.
+           
                 </p>
                 <p style="margin-bottom: 15px;">
-                    <strong>Nearest Major Town:</strong> Ongole, Andhra Pradesh.
+                   
                 </p>
 
                 <!-- OPENING HOURS CARD -->
@@ -1408,16 +1432,11 @@
                 </div>
 
                 <div style="margin-top: 20px; display: flex; gap: 12px; flex-wrap: wrap;">
-                   
-                    
                     <a href="https://goo.gl/maps/qjE4VNc6CpBkpXQC7" target="_blank" class="btn-secondary">
                         <i class="fa-solid fa-map-location-dot"></i> OPEN IN GOOGLE MAPS
                     </a>
                 </div>
             </div>
-
-            <!-- EMBEDDED MAP -->
-          
         </div>
     </section>
 
@@ -1443,9 +1462,15 @@
             </div>
 
             <div class="contact-card">
+                <i class="fa-brands fa-instagram"></i>
+                <h4>INSTAGRAM</h4>
+                <p style="margin-top: 6px;"><a href="https://www.instagram.com/sriankalamma_gummalampadu?igsh=czZwMGVkbXV5MnZj" target="_blank" style="color: #E1306C; text-decoration: none;">Follow on Instagram</a></p>
+            </div>
+
+            <div class="contact-card">
                 <i class="fa-brands fa-youtube"></i>
                 <h4>YOUTUBE</h4>
-                <p style="margin-top: 6px;"><a href="https://youtube.com/@sriankalammathallidevastanam?si=BNjNzmB3uz7R_vAg" target="_blank" style="color: #FF0000; text-decoration: none;">Watch Temple Channel</a></p>
+                <p style="margin-top: 6px;"><a href="https://youtube.com/@sriankalamma_gummalampadu?si=BNjNzmB3uz7R_vAg" target="_blank" style="color: #FF0000; text-decoration: none;">Watch Temple Channel</a></p>
             </div>
         </div>
     </section>
@@ -1457,11 +1482,11 @@
 
     <div class="floating-music" id="music-toggle-btn" onclick="toggleBackgroundMusic()">
         <i class="fa-solid fa-music"></i>
-        <span id="music-btn-text">DIVINE MUSIC: ON</span>
+        <span id="music-btn-text">DIVINE MUSIC: OFF</span>
     </div>
 
     <!-- Background Devotional Audio -->
-    <audio id="bg-audio" loop preload="auto" autoplay>
+    <audio id="bg-audio" loop preload="auto">
         <source src="audio.mp3" type="audio/mpeg">
     </audio>
 
@@ -1470,7 +1495,7 @@
         <div class="footer-grid">
             <div class="footer-col">
                 <h4 class="telugu-text">శ్రీ అంకాలమ్మ తల్లి దేవస్థానం</h4>
-                <p>Gummalampadu Village, Prakasam District, Andhra Pradesh – 523225.</p>
+                <p>Gummalampadu Village,Prakasam DIST (A.P) – 523225.</p>
                 <p style="margin-top: 8px;">Phone: +91 9949770966</p>
             </div>
 
@@ -1483,18 +1508,18 @@
                     <li><a href="#history">Temple History</a></li>
                     <li><a href="#festivals">Festivals</a></li>
                     <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="https://www.instagram.com/sriankalamma_gummalampadu?igsh=czZwMGVkbXV5MnZj" target="_blank">Instagram</a></li>
                 </ul>
             </div>
 
             <div class="footer-col">
-                
-                <p>Managed  & Orgainized by</p>
-                <p style="color: var(--gold-bright); font-weight: 600; margin-top: 4px;">SRI ANKALAMMA THALLI DEVASTHANAM Trust ,<h9>Gummalampadu(PRAKASAM DIST)</h9></p>
+                <p>Managed & Organized by</p>
+                <p style="color: var(--gold-bright); font-weight: 600; margin-top: 4px;">SRI ANKALAMMA THALLI DEVASTANAM Trust, <br>Gummalampadu</p>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <p>© Sri Ankalamma Thalli Devasthanam Trust (Gummalampadu). All Rights Reserved.</p>
+            <p>© Sri Ankalamma Thalli Devastanam Trust (Gummalampadu). All Rights Reserved.</p>
             <div class="developer-credit">
                 Developed by <strong>ARRIBOYINASOFTWARE</strong> | 9392426060
             </div>
@@ -1506,6 +1531,7 @@
         // Intro Screen Controller
         const introOverlay = document.getElementById('intro-overlay');
         const doorsContainer = document.getElementById('doors-container');
+        const startContainer = document.getElementById('start-container');
         const introCanvas = document.getElementById('intro-canvas');
         const ctx = introCanvas.getContext('2d');
 
@@ -1569,45 +1595,31 @@
         const musicBtnText = document.getElementById('music-btn-text');
         let isMusicPlaying = false;
 
-        function startAutomaticMusic() {
+        function playAudioSafely() {
             bgAudio.play().then(() => {
                 isMusicPlaying = true;
                 musicBtnText.innerText = "DIVINE MUSIC: ON";
-            }).catch(() => {
-                const unlockAudio = () => {
-                    bgAudio.play().then(() => {
-                        isMusicPlaying = true;
-                        musicBtnText.innerText = "DIVINE MUSIC: ON";
-                    }).catch(err => console.log(err));
-                    document.removeEventListener('click', unlockAudio);
-                    document.removeEventListener('touchstart', unlockAudio);
-                };
-                document.addEventListener('click', unlockAudio);
-                document.addEventListener('touchstart', unlockAudio);
+            }).catch(err => {
+                console.log("Audio play error:", err);
             });
         }
 
-        window.addEventListener('DOMContentLoaded', () => {
-            startAutomaticMusic();
-        });
+        // Action when user clicks "START DARSHAN"
+        function startTempleExperience() {
+            // 1. Play audio immediately on user gesture (Allowed by Chrome & iOS)
+            playAudioSafely();
 
-        setTimeout(() => {
+            // 2. Open Temple Doors
             doorsContainer.classList.add('doors-open');
-            startAutomaticMusic();
 
+            // 3. Smoothly fade out intro screen after doors swing open
             setTimeout(() => {
-                enterWebsite();
-            }, 2500);
-        }, 1000);
-
-        function enterWebsite() {
-            startAutomaticMusic();
-            introOverlay.style.opacity = '0';
-            
-            setTimeout(() => {
-                introOverlay.style.display = 'none';
-                if (introAnimationId) cancelAnimationFrame(introAnimationId);
-            }, 1000);
+                introOverlay.style.opacity = '0';
+                setTimeout(() => {
+                    introOverlay.style.display = 'none';
+                    if (introAnimationId) cancelAnimationFrame(introAnimationId);
+                }, 1000);
+            }, 2200);
         }
 
         // Hero Particles
@@ -1719,13 +1731,6 @@
                     isMusicPlaying = true;
                 }).catch(err => console.log(err));
             }
-        }
-
-        // Directions Handler using user's location to the specified Google Maps link
-        function openLiveDirections() {
-            const destinationUrl = encodeURIComponent("https://goo.gl/maps/qjE4VNc6CpBkpXQC7");
-            const directionsUrl = `https://www.google.com/maps/dir/?api=1&origin=current+location&destination=${destinationUrl}`;
-            window.open(directionsUrl, '_blank');
         }
     </script>
 </body>
